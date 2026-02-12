@@ -3,7 +3,7 @@
 A static website built with HTML, CSS, and JavaScript.
 
 ## Live Site
-https://visual-library1010.github.io
+https://visual-library1010.github.io/visual-library/
 
 ## Overview
 Visual Library is a web project designed to showcase visual content in a clean and responsive layout.
