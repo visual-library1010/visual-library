@@ -121,10 +121,8 @@ function render(list) {
     const card = document.createElement("div");
     card.className = "card";
 
-    const inBucket = bucket.has(img.file);
-
     card.innerHTML = `
-      <div class="bucket-icon ${inBucket ? "active" : ""}" data-file="${img.file}">
+      <div class="bucket-icon" data-file="${img.file}">
         📚
       </div>
       <img src="${img.file}" alt="" />
@@ -137,13 +135,19 @@ function render(list) {
       </div>
     `;
 
+    // Bucket toggle (no re-render unless in bucket mode)
     card.querySelector(".bucket-icon").addEventListener("click", e => {
       e.stopPropagation();
       const file = e.target.dataset.file;
+
       if (bucket.has(file)) bucket.delete(file);
       else bucket.add(file);
+
       saveBucket();
-      applyFilters();
+
+      if (bucketMode) {
+        applyFilters(); // must re-render if in bucket mode
+      }
     });
 
     card.addEventListener("click", () => expandAt(index));
