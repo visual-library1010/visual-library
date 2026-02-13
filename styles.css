@@ -66,13 +66,18 @@ header input {
   background: #222;
 }
 
-/* GRID */
+/* GRID DEFAULT */
 #grid {
   padding: 8px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 8px;
   align-content: start;
+}
+
+/* BUCKET MODE GRID (2 columns) */
+#grid.bucket-layout {
+  grid-template-columns: repeat(2, 1fr);
 }
 
 /* CARD */
@@ -96,24 +101,20 @@ header input {
   border-radius: 4px;
   font-size: 14px;
   cursor: pointer;
-
   opacity: 0;
   background: rgba(0, 0, 0, 0.6);
   transition: opacity 0.2s ease, background 0.2s ease;
 }
 
-/* Only visible on hover */
 .card:hover .bucket-icon {
   opacity: 0.9;
 }
 
-/* Highlight only when active AND hovered */
 .card:hover .bucket-icon.active {
   background: #3a6;
   opacity: 1;
 }
 
-/* Subtle hover feedback when not active */
 .card:hover .bucket-icon:not(.active):hover {
   background: rgba(255, 255, 255, 0.2);
 }

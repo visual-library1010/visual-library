@@ -117,6 +117,13 @@ function render(list) {
   expandedCard = null;
   expandedIndex = -1;
 
+  // Apply bucket layout mode
+  if (bucketMode) {
+    grid.classList.add("bucket-layout");
+  } else {
+    grid.classList.remove("bucket-layout");
+  }
+
   list.forEach((img, index) => {
     const card = document.createElement("div");
     card.className = "card";
@@ -137,25 +144,17 @@ function render(list) {
       </div>
     `;
 
-    // Bucket toggle (no collapse, no full re-render unless in bucket mode)
     card.querySelector(".bucket-icon").addEventListener("click", e => {
       e.stopPropagation();
       const file = e.target.dataset.file;
 
-      if (bucket.has(file)) {
-        bucket.delete(file);
-      } else {
-        bucket.add(file);
-      }
+      if (bucket.has(file)) bucket.delete(file);
+      else bucket.add(file);
 
       saveBucket();
-
-      // Update icon state visually without collapsing
       e.target.classList.toggle("active");
 
-      if (bucketMode) {
-        applyFilters(); // must re-render if filtering by bucket
-      }
+      if (bucketMode) applyFilters();
     });
 
     card.addEventListener("click", () => expandAt(index));
