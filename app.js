@@ -193,4 +193,8 @@ document.addEventListener("keydown", e => {
   }
 
   if (e.key === "Escape") {
-    if (expandedCard) expandedCard.classList.remove("
+    if (expandedCard) expandedCard.classList.remove("expanded");
+    expandedCard = null;
+    expandedIndex = -1;
+  }
+});
