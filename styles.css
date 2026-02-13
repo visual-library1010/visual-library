@@ -9,17 +9,20 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont;
 }
 
+/* HEADER */
 header {
-  padding: 8px;
+  padding: 8px 12px;
   border-bottom: 1px solid #222;
   background: #111;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
 }
 
 header input {
-  width: 400px;
+  width: 420px;
+  max-width: 100%;
   padding: 10px;
   background: #1a1a1a;
   border: none;
@@ -46,6 +49,67 @@ header button:hover {
   height: calc(100vh - 48px);
 }
 
+/* FILTERS (FORCED COLUMN) */
+#filters {
+  border-right: 1px solid #222;
+  padding: 12px;
+  font-size: 13px;
+  color: #aaa;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.filters-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#folder-filters {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  width: 100%;
+}
+
+.filter-item input {
+  flex-shrink: 0;
+}
+
+.bucket-section {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.bucket-section button {
+  margin-bottom: 6px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: #ccc;
+  padding: 6px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.bucket-section button:hover {
+  background: #222;
+}
+
 /* GRID DEFAULT */
 #grid {
   padding: 8px;
@@ -55,7 +119,7 @@ header button:hover {
   align-content: start;
 }
 
-/* LARGE GRID MODE (2 columns) */
+/* LARGE GRID MODE */
 #grid.large-grid {
   grid-template-columns: repeat(2, 1fr);
 }
