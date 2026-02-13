@@ -92,24 +92,30 @@ header input {
   position: absolute;
   top: 6px;
   right: 6px;
-  background: rgba(0,0,0,0.6);
   padding: 4px 6px;
   border-radius: 4px;
   font-size: 14px;
   cursor: pointer;
+
   opacity: 0;
+  background: rgba(0, 0, 0, 0.6);
   transition: opacity 0.2s ease, background 0.2s ease;
 }
 
-/* Visible only on hover */
+/* Only visible on hover */
 .card:hover .bucket-icon {
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
-/* Subtle hover feedback */
-.bucket-icon:hover {
-  background: rgba(255,255,255,0.2);
+/* Highlight only when active AND hovered */
+.card:hover .bucket-icon.active {
+  background: #3a6;
   opacity: 1;
+}
+
+/* Subtle hover feedback when not active */
+.card:hover .bucket-icon:not(.active):hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 /* META */
