@@ -24,7 +24,7 @@ header input {
   font-size: 14px;
 }
 
-/* MAIN LAYOUT */
+/* LAYOUT */
 #layout {
   display: grid;
   grid-template-columns: 260px 1fr;
@@ -44,37 +44,26 @@ header input {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
-}
-
-#filters h3 {
-  margin: 0;
-  font-size: 14px;
-  color: #ddd;
-}
-
-#clear-filters {
-  background: none;
-  border: none;
-  color: #888;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-#clear-filters:hover {
-  color: #fff;
 }
 
 .filter-item {
   display: flex;
-  align-items: center;
   gap: 8px;
   margin-bottom: 6px;
+}
+
+.bucket-section button {
+  display: block;
+  margin-bottom: 6px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: #ccc;
+  padding: 6px;
   cursor: pointer;
 }
 
-.filter-item input {
-  cursor: pointer;
+.bucket-section button:hover {
+  background: #222;
 }
 
 /* GRID */
@@ -88,32 +77,41 @@ header input {
 
 /* CARD */
 .card {
-  cursor: pointer;
   position: relative;
+  cursor: pointer;
 }
 
 .card img {
   width: 100%;
-  height: auto;
   display: block;
   border-radius: 3px;
 }
 
-/* METADATA */
+/* BUCKET ICON */
+.bucket-icon {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: rgba(0,0,0,0.6);
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.bucket-icon.active {
+  background: #3a6;
+  opacity: 1;
+}
+
+/* META */
 .card .meta {
   display: none;
   padding: 12px 16px;
   font-size: 13px;
-  line-height: 1.5;
-  color: #ccc;
 }
 
-.card .meta .notes {
-  margin-top: 8px;
-  color: #aaa;
-}
-
-/* EXPANDED */
 .card.expanded {
   grid-column: 1 / -1;
   background: #000;
@@ -121,9 +119,7 @@ header input {
 }
 
 .card.expanded img {
-  display: block;
   margin: 0 auto;
-  max-width: 100%;
   max-height: 65vh;
   object-fit: contain;
 }
@@ -132,12 +128,4 @@ header input {
   display: block;
   max-width: 960px;
   margin: 0 auto;
-}
-
-.card.expanded::after {
-  content: "";
-  display: block;
-  height: 1px;
-  background: #222;
-  margin-top: 12px;
 }
