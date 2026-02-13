@@ -7,12 +7,15 @@ const bucketCountEl = document.getElementById("bucket-count");
 const viewBucketBtn = document.getElementById("view-bucket");
 const clearBucketBtn = document.getElementById("clear-bucket");
 
+const gridToggleBtn = document.getElementById("grid-toggle");
+
 let images = [];
 let filteredImages = [];
 let expandedCard = null;
 let expandedIndex = -1;
 let activeFolders = new Set();
 let bucketMode = false;
+let largeGridMode = false;
 
 const BUCKET_KEY = "visual_library_bucket";
 let bucket = new Set(JSON.parse(localStorage.getItem(BUCKET_KEY) || "[]"));
@@ -38,6 +41,12 @@ clearBucketBtn.addEventListener("click", () => {
   bucket.clear();
   saveBucket();
   applyFilters();
+});
+
+gridToggleBtn.addEventListener("click", () => {
+  largeGridMode = !largeGridMode;
+  grid.classList.toggle("large-grid", largeGridMode);
+  gridToggleBtn.textContent = largeGridMode ? "Small Grid" : "Large Grid";
 });
 
 /* ---------- FOLDER FILTERS ---------- */
@@ -117,13 +126,6 @@ function render(list) {
   expandedCard = null;
   expandedIndex = -1;
 
-  // Apply bucket layout mode
-  if (bucketMode) {
-    grid.classList.add("bucket-layout");
-  } else {
-    grid.classList.remove("bucket-layout");
-  }
-
   list.forEach((img, index) => {
     const card = document.createElement("div");
     card.className = "card";
@@ -191,8 +193,4 @@ document.addEventListener("keydown", e => {
   }
 
   if (e.key === "Escape") {
-    if (expandedCard) expandedCard.classList.remove("expanded");
-    expandedCard = null;
-    expandedIndex = -1;
-  }
-});
+    if (expandedCard) expandedCard.classList.remove("

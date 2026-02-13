@@ -13,10 +13,13 @@ header {
   padding: 8px;
   border-bottom: 1px solid #222;
   background: #111;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header input {
-  width: 100%;
+  width: 400px;
   padding: 10px;
   background: #1a1a1a;
   border: none;
@@ -24,46 +27,23 @@ header input {
   font-size: 14px;
 }
 
+header button {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: #ccc;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+header button:hover {
+  background: #222;
+}
+
 /* LAYOUT */
 #layout {
   display: grid;
   grid-template-columns: 260px 1fr;
   height: calc(100vh - 48px);
-}
-
-/* FILTERS */
-#filters {
-  border-right: 1px solid #222;
-  padding: 12px;
-  font-size: 13px;
-  color: #aaa;
-  overflow-y: auto;
-}
-
-.filters-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.filter-item {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 6px;
-}
-
-.bucket-section button {
-  display: block;
-  margin-bottom: 6px;
-  background: #1a1a1a;
-  border: 1px solid #333;
-  color: #ccc;
-  padding: 6px;
-  cursor: pointer;
-}
-
-.bucket-section button:hover {
-  background: #222;
 }
 
 /* GRID DEFAULT */
@@ -75,8 +55,8 @@ header input {
   align-content: start;
 }
 
-/* BUCKET MODE GRID (2 columns) */
-#grid.bucket-layout {
+/* LARGE GRID MODE (2 columns) */
+#grid.large-grid {
   grid-template-columns: repeat(2, 1fr);
 }
 
