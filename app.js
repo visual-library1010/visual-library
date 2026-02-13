@@ -134,7 +134,7 @@ function render(list) {
 
     card.innerHTML = `
       <div class="bucket-icon ${inBucket ? "active" : ""}" data-file="${img.file}">
-        📚
+        <span class="material-symbols-outlined">collections</span>
       </div>
       <img src="${img.file}" alt="" />
       <div class="meta">
@@ -148,13 +148,13 @@ function render(list) {
 
     card.querySelector(".bucket-icon").addEventListener("click", e => {
       e.stopPropagation();
-      const file = e.target.dataset.file;
+      const file = e.currentTarget.dataset.file;
 
       if (bucket.has(file)) bucket.delete(file);
       else bucket.add(file);
 
       saveBucket();
-      e.target.classList.toggle("active");
+      e.currentTarget.classList.toggle("active");
 
       if (bucketMode) applyFilters();
     });
